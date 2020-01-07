@@ -14,10 +14,10 @@ public class MockPerson {
 	
 	private Person mockEntity(Integer number) {
 		Person person = new Person();
-		person.setAddress("Some Address test " + number);
-		person.setFirstName("First name Test" + number);
+		person.setAddress("Addres Test" + number);
+		person.setFirstName("First Name Test" + number);
 		person.setGender(((number % 2)==0) ? "Male" : "Female");
-		person.setLastName("Last name test " + number);
+		person.setLastName("Last Name Test" + number);
 		person.setId(number.longValue());
 		
 		return person;
@@ -25,18 +25,13 @@ public class MockPerson {
 
 	public PersonVO mockVO(Integer number) {
 		PersonVO person = new PersonVO();
-		person.setAddress("Some Address test " + number);
-		person.setFirstName("First name Test" + number);
+		person.setAddress("Addres Test" + number);
+		person.setFirstName("First Name Test" + number);
 		person.setGender(((number % 2)==0) ? "Male" : "Female");
-		person.setLastName("Last name test " + number);
+		person.setLastName("Last Name Test" + number);
 		person.setId(number.longValue());
 		
 		return person;
-	}
-	
-	private PersonVO mockVO(int i) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	public List<Person> mockEntityList(){
