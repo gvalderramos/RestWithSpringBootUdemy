@@ -24,17 +24,17 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 						new Date(), 
 						ex.getMessage(), 
 						request.getDescription(false));
-		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	@ExceptionHandler(ResourceNotFoundException.class)
-	public final ResponseEntity<ExceptionResponse> handleBadRequestExceptions(Exception ex, WebRequest request){
+	public final ResponseEntity<ExceptionResponse> handleBadRequestExceptions(Exception ex, WebRequest request) {
 		ExceptionResponse exceptionResponse = 
 				new ExceptionResponse(
-						new Date(), 
-						ex.getMessage(), 
+						new Date(),
+						ex.getMessage(),
 						request.getDescription(false));
-		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(exceptionResponse, HttpStatus.BAD_REQUEST);
 	}
 
 }
