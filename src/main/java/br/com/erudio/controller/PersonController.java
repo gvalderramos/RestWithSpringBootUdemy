@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.erudio.data.vo.PersonVO;
+import br.com.erudio.data.vo.v2.PersonVOv2;
 import br.com.erudio.services.PersonServices;
 
 @RestController
@@ -36,6 +37,11 @@ public class PersonController {
 	@PostMapping
 	public PersonVO create(@RequestBody PersonVO person) {
 		return services.create(person);
+	}
+	
+	@PostMapping("/v2")
+	public PersonVOv2 createV2(@RequestBody PersonVOv2 person) {
+		return services.createV2(person);
 	}
 	
 	@PutMapping
