@@ -9,8 +9,7 @@ import org.springframework.stereotype.Service;
 import br.com.erudio.converter.DozerConverter;
 import br.com.erudio.converter.custom.PersonConverter;
 import br.com.erudio.data.model.Person;
-import br.com.erudio.data.vo.PersonVO;
-import br.com.erudio.data.vo.v2.PersonVOv2;
+import br.com.erudio.data.vo.v1.PersonVO;
 import br.com.erudio.repository.PersonRepository;
 
 @Service
@@ -25,12 +24,6 @@ public class PersonServices {
 	public PersonVO create(PersonVO person) {
 		var entity = DozerConverter.parseObject(person, Person.class);
 		var vo = DozerConverter.parseObject(repository.save(entity), PersonVO.class);
-		return vo;
-	}
-	
-	public PersonVOv2 createV2(PersonVOv2 person) {
-		var entity = converter.convertVOToEntity(person);
-		var vo = converter.convertEntityToVO(repository.save(entity));
 		return vo;
 	}
 	

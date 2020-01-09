@@ -1,15 +1,20 @@
-package br.com.erudio.data.vo;
+package br.com.erudio.data.vo.v1;
 
 import java.io.Serializable;
 
+//@JsonPropertyOrder({"id", "address", "first_name", "last_name", "gender"})
 public class PersonVO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	private Long Id;
+	
+	//@JsonProperty("first_name")
 	private String firstName;
+	//@JsonProperty("last_name")
 	private String lastName;
 	private String address;
+	//@JsonIgnore
 	private String gender;
 	
 	public PersonVO() {
