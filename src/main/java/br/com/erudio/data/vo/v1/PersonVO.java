@@ -2,12 +2,21 @@ package br.com.erudio.data.vo.v1;
 
 import java.io.Serializable;
 
-//@JsonPropertyOrder({"id", "address", "first_name", "last_name", "gender"})
-public class PersonVO implements Serializable {
+import org.springframework.hateoas.RepresentationModel;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.github.dozermapper.core.Mapping;
+
+
+@JsonPropertyOrder({"id", "address", "firstName", "lastName", "gender"})
+public class PersonVO extends RepresentationModel<PersonVO> implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private Long Id;
+	@Mapping("id")
+	@JsonProperty("id")
+	private Long key;
 	
 	//@JsonProperty("first_name")
 	private String firstName;
@@ -21,23 +30,26 @@ public class PersonVO implements Serializable {
 		
 	}
 
-	public PersonVO(Long id, String firstName, String lastName, String address, String gender) {
-		super();
-		Id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.gender = gender;
+	public Long getKey() {
+		return key;
+	}
+
+	public void setKey(Long key) {
+		this.key = key;
+	}
+
+	public String getFirstName() {
+		return firstName;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+		int result = super.hashCode();
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+		result = prime * result + ((key == null) ? 0 : key.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		return result;
 	}
@@ -46,16 +58,11 @@ public class PersonVO implements Serializable {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		PersonVO other = (PersonVO) obj;
-		if (Id == null) {
-			if (other.Id != null)
-				return false;
-		} else if (!Id.equals(other.Id))
-			return false;
 		if (address == null) {
 			if (other.address != null)
 				return false;
@@ -71,24 +78,17 @@ public class PersonVO implements Serializable {
 				return false;
 		} else if (!gender.equals(other.gender))
 			return false;
+		if (key == null) {
+			if (other.key != null)
+				return false;
+		} else if (!key.equals(other.key))
+			return false;
 		if (lastName == null) {
 			if (other.lastName != null)
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
 		return true;
-	}
-
-	public Long getId() {
-		return Id;
-	}
-
-	public void setId(Long id) {
-		Id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
 	}
 
 	public void setFirstName(String firstName) {
